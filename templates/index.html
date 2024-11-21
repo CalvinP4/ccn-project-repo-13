@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Run ML Model</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            max-width: 600px;
+            width: 100%;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        input[type="text"] {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #statusMessage {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 14px;
+        }
+        #videoContainer {
+            display: none;
+            margin-top: 30px;
+        }
+        video {
+            width: 100%;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Run ML Model</h1>
+        <form id="modelForm">
+            <label for="input_video">Input Video Path:</label>
+            <input type="text" id="input_video" name="input_video" required>
+            <button type="submit">Run Model</button>
+        </form>
+        <p id="statusMessage"></p>
+
+        <div id="videoContainer">
+            <h2>Generated Videos:</h2>
+            <video id="video1" controls></video>
+            <video id="video2" controls></video>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('modelForm').onsubmit = async function(event) {
+            event.preventDefault();
+            const inputVideo = document.getElementById('input_video').value;
+            const inputVideoName = inputVideo.split('/').pop().split('.')[0]; // Extract the video name
+
+            try {
+                const response = await fetch('/run_model', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ input_video: inputVideo, input_video_name: inputVideoName })
+                });
+
+                const result = await response.json();
+                document.getElementById('statusMessage').textContent = result.message;
+
+                if (result.status === 'success') {
+                    document.getElementById('videoContainer').style.display = 'block';
+                    document.getElementById('video1').src = result.video1_url;
+                    document.getElementById('video2').src = result.video2_url;
+                }
+            } catch (error) {
+                document.getElementById('statusMessage').textContent = 'Error: ' + error.message;
+            }
+        };
+    </script>
+</body>
+</html>

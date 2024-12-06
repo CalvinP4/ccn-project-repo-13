@@ -98,11 +98,15 @@ Follow these steps to set up the project locally:
 2. **Upload Video for Processing**
    - Open the app in a browser at `http://localhost:5000`.
    - Enter the path to a `.mp4` video file and click Run Model.
+     ![image](https://github.com/user-attachments/assets/49be24b7-4994-4991-8d96-14d7ab651425)
+
   
 3. **View the Results**
    The model will output two videos:
    - A 3D reconstructed model
    - A side-by-side comparison of the 3D model with a grid
+     ![image](https://github.com/user-attachments/assets/ff133d97-2af1-43f1-b837-007b6da0301a)
+
   
 ---
 

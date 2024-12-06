@@ -1,4 +1,4 @@
-# **Visual Speech-Aware Perceptual 3D Facial Expression Reconstruction from Videos**
+# **Team 13: Visual Speech-Aware Perceptual 3D Facial Expression Reconstruction from Videos**
 
 ## **Table of Contents**
 - [Introduction](#introduction)
@@ -11,7 +11,7 @@
 ---
 
 ## **Introduction**
-For ITCS-6166, we selected **Spectre** as our exploratory project and successfully ran it on a local system.
+For ITCS-6166, we selected [**Spectre**](https://github.com/filby89/spectre) as our exploratory project and successfully ran it on a Windows local system.
 
 This project introduces a novel method for perceptual 3D reconstruction of facial expressions, especially during speech, from video footage. Using advancements in deep learning, it addresses limitations in existing monocular 3D face reconstruction methods, particularly in rendering accurate mouth movements. A key innovation is the introduction of a "lipread" loss function, enabling the reconstructed 3D facial models to closely mimic the input video, especially around the mouth area. Unlike traditional methods, this approach requires neither text transcriptions nor audio data, making it ideal for training on unlabeled datasets.
 
@@ -115,6 +115,11 @@ Follow these steps to set up the project locally:
 Below is a conceptual representation of the system architecture:
 ![image](https://github.com/user-attachments/assets/4ee8400a-d6ac-4ff9-a98c-3d4aaa845cb0)
 
-
+---
+## **Team Members**
+- Pavan Vanjre Ravindranath
+- Vivek Sai Chinna Burada
+- Sathvika Patwari
+- Calvin Craig Pinto
 
   
